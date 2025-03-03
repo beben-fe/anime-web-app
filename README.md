@@ -58,14 +58,15 @@ yarn dev
 
 ```
 src/
-├── app/                    # Next.js app router pages
+├── app/                   # Next.js app router pages
 │   ├── page.tsx           # Home page (anime list)
 │   └── anime/[id]/        # Dynamic anime detail pages
 ├── components/            # Reusable React components
+├── constant/              # Constant Value for components
 ├── hooks/                 # Custom React hooks
 ├── lib/                   # Utility functions
-├── services/             # API services
-└── types/                # TypeScript type definitions
+├── services/              # API services
+└── types/                 # TypeScript type definitions
 ```
 
 ## Features Implementation
@@ -73,7 +74,7 @@ src/
 ### Caching
 - Implemented using TanStack Query with configurable stale times
 - Anime list: 5 minutes stale time
-- Anime details: 30 minutes stale time
+- Anime details: 5 minutes stale time
 
 ### Search
 - Debounced search input (500ms)
@@ -109,10 +110,6 @@ yarn lint
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments
 

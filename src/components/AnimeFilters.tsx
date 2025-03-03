@@ -1,29 +1,17 @@
 import { X } from 'lucide-react';
 import { Filters } from '@/types/anime';
+import {
+	ANIME_GENRES,
+	ANIME_RATINGS,
+	ANIME_SCORE,
+	ANIME_STATUS,
+	ANIME_TYPES,
+} from '@/constant/filters';
 
 interface AnimeFiltersProps {
 	filters: Filters;
 	onFilterChange: (filters: Filters) => void;
 }
-
-const ANIME_TYPES = ['TV', 'Movie', 'OVA', 'Special', 'ONA', 'Music'];
-const ANIME_STATUS = ['Airing', 'Complete', 'Upcoming'];
-const ANIME_RATINGS = ['G', 'PG', 'PG-13', 'R', 'R+', 'Rx'];
-const ANIME_GENRES = [
-	'Action',
-	'Adventure',
-	'Comedy',
-	'Drama',
-	'Fantasy',
-	'Horror',
-	'Mystery',
-	'Romance',
-	'Sci-Fi',
-	'Slice of Life',
-	'Sports',
-	'Supernatural',
-	'Thriller',
-];
 
 export function AnimeFilters({ filters, onFilterChange }: AnimeFiltersProps) {
 	const clearFilters = () => {
@@ -56,7 +44,7 @@ export function AnimeFilters({ filters, onFilterChange }: AnimeFiltersProps) {
 						id="score"
 						value={filters.score}
 						onChange={(value) => onFilterChange({ ...filters, score: value })}
-						options={[9, 8, 7, 6, 5].map((score) => `${score}+ Stars`)}
+						options={ANIME_SCORE}
 						placeholder="Any Score"
 					/>
 

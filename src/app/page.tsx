@@ -38,9 +38,24 @@ export default function Home() {
 
 			<AnimeFilters filters={filters} onFilterChange={setFilters} />
 
-			<AnimeGrid data={data} isFetching={isFetching} />
+			{!isFetching && data?.data?.length === 0 ? (
+				<div className="text-center py-8">
+					<p className="text-lg text-gray-600">
+						No anime found matching your criteria
+					</p>
+					{search && (
+						<button
+							onClick={handleClearSearch}
+							className="mt-4 text-blue-500 hover:text-blue-600">
+							Clear search
+						</button>
+					)}
+				</div>
+			) : (
+				<AnimeGrid data={data} isFetching={isFetching} />
+			)}
 
-			{data && (
+			{data && data?.data?.length > 0 && (
 				<Pagination
 					page={page}
 					hasNextPage={data.pagination.has_next_page}
