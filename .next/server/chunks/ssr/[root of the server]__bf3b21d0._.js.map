@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 15, "column": 0}, "map": {"version":3,"sources":["file:///Users/beben/Documents/Beben-Important/anime-web-app/src/app/providers.tsx"],"sourcesContent":["'use client';\n\nimport { QueryClient, QueryClientProvider } from '@tanstack/react-query';\nimport { ReactQueryDevtools } from '@tanstack/react-query-devtools';\nimport { useState } from 'react';\n\nexport function Providers({ children }: { children: React.ReactNode }) {\n\tconst [queryClient] = useState(\n\t\t() =>\n\t\t\tnew QueryClient({\n\t\t\t\tdefaultOptions: {\n\t\t\t\t\tqueries: {\n\t\t\t\t\t\tstaleTime: 60 * 1000,\n\t\t\t\t\t\tgcTime: 5 * 60 * 1000,\n\t\t\t\t\t\tnetworkMode: 'always',\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t})\n\t);\n\n\treturn (\n\t\t<QueryClientProvider client={queryClient}>\n\t\t\t{children}\n\t\t\t<ReactQueryDevtools initialIsOpen={false} />\n\t\t</QueryClientProvider>\n\t);\n}\n"],"names":[],"mappings":";;;;AAEA;AAAA;AACA;AACA;AAJA;;;;;AAMO,SAAS,UAAU,EAAE,QAAQ,EAAiC;IACpE,MAAM,CAAC,YAAY,GAAG,CAAA,GAAA,qMAAA,CAAA,WAAQ,AAAD,EAC5B,IACC,IAAI,6KAAA,CAAA,cAAW,CAAC;YACf,gBAAgB;gBACf,SAAS;oBACR,WAAW,KAAK;oBAChB,QAAQ,IAAI,KAAK;oBACjB,aAAa;gBACd;YACD;QACD;IAGF,qBACC,8OAAC,sLAAA,CAAA,sBAAmB;QAAC,QAAQ;;YAC3B;0BACD,8OAAC,oLAAA,CAAA,qBAAkB;gBAAC,eAAe;;;;;;;;;;;;AAGtC","debugId":null}},
-    {"offset": {"line": 56, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}
