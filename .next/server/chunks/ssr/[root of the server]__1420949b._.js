@@ -808,7 +808,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 function Pagination({ page, hasNextPage, lastVisiblePage, onPageChange }) {
     const getPageNumbers = ()=>{
         const pages = [];
-        const maxVisiblePages = 4;
+        const maxVisiblePages = window.innerWidth < 640 ? 2 : 4;
         pages.push(1);
         if (page > 3) {
             pages.push('start-ellipsis');
@@ -827,12 +827,12 @@ function Pagination({ page, hasNextPage, lastVisiblePage, onPageChange }) {
         return pages;
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "mt-8 flex justify-center items-center gap-2",
+        className: "mt-8 flex flex-wrap justify-center items-center gap-2",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                 onClick: ()=>onPageChange(Math.max(1, page - 1)),
                 disabled: page === 1,
-                className: "px-4 py-2 rounded-lg bg-blue-500 text-white disabled:bg-gray-300 cursor-pointer",
+                className: "px-2 sm:px-4 py-2 rounded-lg bg-blue-500 text-white disabled:bg-gray-300 cursor-pointer text-sm sm:text-base",
                 children: "Previous"
             }, void 0, false, {
                 fileName: "[project]/src/components/Pagination.tsx",
@@ -840,9 +840,9 @@ function Pagination({ page, hasNextPage, lastVisiblePage, onPageChange }) {
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-center gap-2",
+                className: "flex items-center gap-1 sm:gap-2",
                 children: getPageNumbers().map((pageNum)=>typeof pageNum === 'string' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "px-2",
+                        className: "px-1 sm:px-2",
                         children: "..."
                     }, pageNum, false, {
                         fileName: "[project]/src/components/Pagination.tsx",
@@ -851,7 +851,7 @@ function Pagination({ page, hasNextPage, lastVisiblePage, onPageChange }) {
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: ()=>onPageChange(pageNum),
                         disabled: pageNum === page,
-                        className: `w-10 h-10 rounded-lg ${pageNum === page ? 'bg-blue-600 text-white' : 'bg-blue-400 hover:bg-blue-500'}`,
+                        className: `w-8 h-8 sm:w-10 sm:h-10 rounded-lg text-sm sm:text-base ${pageNum === page ? 'bg-blue-600 text-white' : 'bg-blue-400 hover:bg-blue-500'}`,
                         children: pageNum
                     }, `page-${pageNum}`, false, {
                         fileName: "[project]/src/components/Pagination.tsx",
@@ -866,7 +866,7 @@ function Pagination({ page, hasNextPage, lastVisiblePage, onPageChange }) {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                 onClick: ()=>onPageChange(page + 1),
                 disabled: !hasNextPage,
-                className: "px-4 py-2 rounded-lg bg-blue-500 text-white disabled:bg-gray-300 cursor-pointer",
+                className: "px-2 sm:px-4 py-2 rounded-lg bg-blue-500 text-white disabled:bg-gray-300 cursor-pointer text-sm sm:text-base",
                 children: "Next"
             }, void 0, false, {
                 fileName: "[project]/src/components/Pagination.tsx",

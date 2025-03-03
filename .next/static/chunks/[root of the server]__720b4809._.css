@@ -489,6 +489,10 @@ img, video {
   width: 2.5rem;
 }
 
+.w-8 {
+  width: 2rem;
+}
+
 .max-w-md {
   max-width: 28rem;
 }
@@ -568,6 +572,10 @@ img, video {
 
 .gap-8 {
   gap: 2rem;
+}
+
+.gap-1 {
+  gap: .25rem;
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
@@ -676,6 +684,11 @@ img, video {
 .px-2 {
   padding-left: .5rem;
   padding-right: .5rem;
+}
+
+.px-1 {
+  padding-left: .25rem;
+  padding-right: .25rem;
 }
 
 .pr-10 {
@@ -883,8 +896,35 @@ body {
 }
 
 @media (width >= 640px) {
+  .sm\:h-10 {
+    height: 2.5rem;
+  }
+
+  .sm\:w-10 {
+    width: 2.5rem;
+  }
+
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sm\:gap-2 {
+    gap: .5rem;
+  }
+
+  .sm\:px-2 {
+    padding-left: .5rem;
+    padding-right: .5rem;
+  }
+
+  .sm\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .sm\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 }
 
