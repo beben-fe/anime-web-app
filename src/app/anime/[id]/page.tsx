@@ -43,7 +43,7 @@ export default function AnimePage() {
 		<main className="container mx-auto px-4 py-8">
 			<Link
 				href="/"
-				className="inline-flex items-center mb-6 text-blue-500 hover:text-blue-600">
+				className="inline-flex items-center mb-6 text-white hover:text-gray-300">
 				← Back to list
 			</Link>
 
@@ -62,12 +62,14 @@ export default function AnimePage() {
 				</div>
 
 				<div className="w-full md:w-2/3">
-					<h1 className="text-3xl font-bold mb-2">{anime.title}</h1>
-					{anime.title_english && anime.title_japanese && (
-						<h2 className="text-xl text-gray-600 mb-4">
-							{anime.title_english} ({anime.title_japanese})
-						</h2>
-					)}
+					<div className="mb-4">
+						<h1 className="text-3xl font-bold mb-2">{anime.title}</h1>
+						{anime.title_english && anime.title_japanese && (
+							<h2 className="text-xl text-gray-600">
+								{anime.title_english} ({anime.title_japanese})
+							</h2>
+						)}
+					</div>
 
 					<div className="grid grid-cols-2 gap-4 mb-6">
 						<div>

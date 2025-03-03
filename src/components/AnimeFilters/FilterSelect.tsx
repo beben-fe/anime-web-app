@@ -39,7 +39,7 @@ export function FilterSelect({
 					ref={buttonRef}
 					type="button"
 					onClick={toggleSelect}
-					className="w-full flex items-center justify-between px-4 py-3 md:py-2 h-14 md:h-10 text-base md:text-sm rounded-md border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+					className="w-full flex items-center justify-between px-4 py-3 md:py-2 h-10 text-base md:text-sm rounded-md border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
 					<span className="!text-gray-900">{value || placeholder}</span>
 					<ChevronDown
 						size={20}

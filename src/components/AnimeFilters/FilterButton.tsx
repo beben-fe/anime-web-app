@@ -14,7 +14,7 @@ export function FilterButton({
 	return (
 		<button
 			onClick={onClick}
-			className="md:hidden w-full flex items-center justify-between p-4 bg-white rounded-lg shadow-md">
+			className="md:hidden w-full flex items-center justify-between p-4 bg-white rounded-lg shadow-md h-10">
 			<div className="flex items-center gap-2">
 				<Filter size={20} className="text-gray-900" />
 				<span className="font-medium text-gray-900">Filters</span>

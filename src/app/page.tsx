@@ -27,14 +27,16 @@ export default function Home() {
 
 	return (
 		<main className="container mx-auto px-4 py-8">
-			<h1 className="text-4xl font-bold mb-8">Anime Explorer</h1>
+			<div className="flex sm:flex-row flex-col justify-between items-center mb-0  w-full">
+				<h1 className="text-4xl font-bold mb-8">Anime Explorer</h1>
 
-			<SearchBar
-				search={search}
-				isFetching={isFetching}
-				onSearch={handleSearch}
-				onClear={handleClearSearch}
-			/>
+				<SearchBar
+					search={search}
+					isFetching={isFetching}
+					onSearch={handleSearch}
+					onClear={handleClearSearch}
+				/>
+			</div>
 
 			<AnimeFilters filters={filters} onFilterChange={setFilters} />
 

@@ -11,13 +11,12 @@ interface AnimeGridProps {
 export function AnimeGrid({ data, isFetching }: AnimeGridProps) {
 	if (isFetching) {
 		return (
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+			<div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
 				{[...Array(12)].map(() => (
 					<div
 						key={`skeleton-${crypto.randomUUID()}`}
 						className="animate-pulse">
 						<div className="bg-gray-200 aspect-[3/4] rounded-lg mb-2"></div>
-						<div className="h-4 bg-gray-200 rounded w-3/4"></div>
 					</div>
 				))}
 			</div>
@@ -25,7 +24,7 @@ export function AnimeGrid({ data, isFetching }: AnimeGridProps) {
 	}
 
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+		<div className="grid grid-cols-2 lg:grid-cols-6 gap-6">
 			{data?.data?.map((anime: AnimeData, index: number) => (
 				<Link
 					href={`/anime/${anime.mal_id}`}
@@ -43,9 +42,9 @@ export function AnimeGrid({ data, isFetching }: AnimeGridProps) {
 							/>
 						</div>
 						<div className="p-4 h-[120px] flex flex-col justify-between">
-							<h2 className="font-semibold text-lg line-clamp-2 text-black">
+							<span className="font-semibold line-clamp-2 text-black text-sm md:text-base">
 								{truncateText(anime.title, 40)}
-							</h2>
+							</span>
 							<div className="flex justify-between text-sm text-gray-600">
 								<span>{anime.type}</span>
 								<span>⭐ {anime.score}</span>
