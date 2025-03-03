@@ -21,6 +21,12 @@ export interface AnimeStreaming {
 	url: string;
 }
 
+export interface AnimeStudio {
+	mal_id: number;
+	name: string;
+	url: string;
+}
+
 export interface AnimeData {
 	mal_id: number;
 	url: string;
@@ -37,6 +43,7 @@ export interface AnimeData {
 	rating: string;
 	score: number;
 	scored_by: number;
+	studios: AnimeStudio[];
 	rank: number;
 	popularity: number;
 	members: number;

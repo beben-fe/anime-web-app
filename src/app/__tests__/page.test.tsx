@@ -41,6 +41,9 @@ jest.mock('@/hooks/useAnimePage', () => ({
 					popularity: 1,
 					members: 200000,
 					favorites: 10000,
+					studios: [
+						{ mal_id: 1, name: 'Test Studio', url: 'https://example.com' },
+					],
 				},
 			],
 			pagination: {
@@ -74,11 +77,10 @@ describe('Home Page', () => {
 		},
 	});
 
-	const renderWithClient = (ui: React.ReactElement) => {
-		return render(
+	const renderWithClient = (ui: React.ReactNode) =>
+		render(
 			<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>
 		);
-	};
 
 	it('renders the anime list', () => {
 		renderWithClient(<Home />);
@@ -153,6 +155,9 @@ describe('Home Page', () => {
 						popularity: 1,
 						members: 200000,
 						favorites: 10000,
+						studios: [
+							{ mal_id: 1, name: 'Test Studio', url: 'https://example.com' },
+						],
 					},
 				],
 				pagination: {

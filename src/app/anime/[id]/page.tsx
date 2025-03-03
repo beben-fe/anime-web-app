@@ -14,14 +14,14 @@ export default function AnimePage() {
 			<div className="container mx-auto px-4 py-8 animate-pulse">
 				<div className="flex flex-col md:flex-row gap-8">
 					<div className="w-full md:w-1/3">
-						<div className="bg-gray-200 h-[400px] rounded-lg"></div>
+						<div className="bg-gray-200 aspect-[3/4] rounded-lg"></div>
 					</div>
 					<div className="w-full md:w-2/3">
 						<div className="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
 						<div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
 						<div className="h-4 bg-gray-200 rounded w-1/3 mb-4"></div>
 						<div className="space-y-2">
-							{[...Array(6)].map(() => (
+							{[...Array(8)].map(() => (
 								<div
 									key={`skeleton-${crypto.randomUUID()}`}
 									className="h-4 bg-gray-200 rounded w-full"></div>
@@ -48,14 +48,13 @@ export default function AnimePage() {
 			</Link>
 
 			<div className="flex flex-col md:flex-row gap-8">
-				<div className="w-full md:w-1/3">
-					<div className="relative h-full">
+				<div className="w-full md:w-1/3 ">
+					<div className="relative aspect-[3/4] w-full">
 						<Image
 							src={anime.images.webp.large_image_url}
 							alt={anime.title}
+							className="object-contain"
 							fill
-							className="object-cover w-full h-full"
-							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
 							priority={true}
 							loading="eager"
 						/>
@@ -64,9 +63,9 @@ export default function AnimePage() {
 
 				<div className="w-full md:w-2/3">
 					<h1 className="text-3xl font-bold mb-2">{anime.title}</h1>
-					{anime.title_english && anime.title_english !== anime.title && (
+					{anime.title_english && anime.title_japanese && (
 						<h2 className="text-xl text-gray-600 mb-4">
-							{anime.title_english}
+							{anime.title_english} ({anime.title_japanese})
 						</h2>
 					)}
 
@@ -77,7 +76,9 @@ export default function AnimePage() {
 						</div>
 						<div>
 							<span className="font-semibold">Episodes: </span>
-							{anime.episodes ?? 'Unknown'}
+							{anime.episodes
+								? `${anime.episodes} episodes (${anime.duration})`
+								: 'Unknown'}
 						</div>
 						<div>
 							<span className="font-semibold">Status: </span>
@@ -90,6 +91,10 @@ export default function AnimePage() {
 							<span className="font-semibold">Year: </span>
 							{anime.year ?? 'Unknown'}
 						</div>
+						<div>
+							<span className="font-semibold">Rank: </span>
+							{anime.rank ?? 'Unknown'}
+						</div>
 						<div className="flex flex-wrap gap-2">
 							<span className="font-semibold">Streaming: </span>
 							{anime.streaming?.map((stream, index) => (
@@ -98,6 +103,19 @@ export default function AnimePage() {
 										{stream.name}
 									</a>
 									{index < (anime.streaming?.length ?? 0) - 1 && ', '}
+								</div>
+							))}
+						</div>
+						<div className="flex flex-wrap gap-2">
+							<span className="font-semibold">
+								{anime?.studios?.length > 1 ? 'Studios: ' : 'Studio: '}
+							</span>
+							{anime.studios?.map((studio, index) => (
+								<div key={studio.name}>
+									<a href={studio.url} key={studio.name}>
+										{studio.name}
+									</a>
+									{index < (anime.studios?.length ?? 0) - 1 && ', '}
 								</div>
 							))}
 						</div>

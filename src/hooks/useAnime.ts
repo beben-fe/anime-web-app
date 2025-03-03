@@ -9,11 +9,12 @@ import type {
 export const useAnimeList = (
 	page: number = 1,
 	query?: string,
-	filters?: Filters
+	filters?: Filters,
+	limit: number = 24
 ) => {
 	return useQuery<AnimeResponse>({
-		queryKey: ['animeList', page, query, filters],
-		queryFn: () => getAnimeList(page, query, filters),
+		queryKey: ['animeList', page, query, filters, limit],
+		queryFn: () => getAnimeList(page, query, filters, limit),
 		staleTime: 5 * 60 * 1000,
 		gcTime: 10 * 60 * 1000,
 		networkMode: 'always',

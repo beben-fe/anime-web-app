@@ -16,7 +16,7 @@ export function AnimeGrid({ data, isFetching }: AnimeGridProps) {
 					<div
 						key={`skeleton-${crypto.randomUUID()}`}
 						className="animate-pulse">
-						<div className="bg-gray-200 h-[300px] rounded-lg mb-2"></div>
+						<div className="bg-gray-200 aspect-[3/4] rounded-lg mb-2"></div>
 						<div className="h-4 bg-gray-200 rounded w-3/4"></div>
 					</div>
 				))}
@@ -32,14 +32,14 @@ export function AnimeGrid({ data, isFetching }: AnimeGridProps) {
 					key={anime.mal_id + anime.title + index}
 					className="group hover:transform hover:scale-105 transition-transform duration-200">
 					<div className="bg-white rounded-lg shadow-lg overflow-hidden">
-						<div className="relative h-[320px] w-full">
+						<div className="relative aspect-[3/4] w-full flex justify-center">
 							<Image
-								src={anime.images.webp.image_url}
+								src={anime.images.webp.large_image_url}
 								alt={anime.title}
-								className="object-cover"
+								className="object-cover rounded-lg"
 								fill
 								priority={true}
-								sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+								loading="eager"
 							/>
 						</div>
 						<div className="p-4 h-[120px] flex flex-col justify-between">

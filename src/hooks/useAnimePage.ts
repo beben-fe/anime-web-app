@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useAnimeList } from './useAnime';
 import debounce from 'lodash/debounce';
 import { Filters } from '@/types/anime';
+import { useScreenSize } from './useScreenSize';
 
 export function useAnimePage() {
 	const [page, setPage] = useState(1);
@@ -16,10 +17,13 @@ export function useAnimePage() {
 		genres: [],
 	});
 
+	const { itemsPerPage } = useScreenSize();
+
 	const { data, isFetching, error } = useAnimeList(
 		page,
 		debouncedSearch,
-		filters
+		filters,
+		itemsPerPage
 	);
 
 	const debouncedSetSearch = useCallback(
