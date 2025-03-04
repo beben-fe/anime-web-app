@@ -5,11 +5,10 @@ import { useAnimeDetail } from '@/hooks/useAnime';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { usePage } from '@/context/PageContext';
 
 export default function AnimePage() {
 	const { id } = useParams();
-	const { currentPage } = usePage();
+
 	const { data, isFetching, error } = useAnimeDetail(id as string);
 
 	if (isFetching) {
