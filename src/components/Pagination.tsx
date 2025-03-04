@@ -1,3 +1,5 @@
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 interface PaginationProps {
 	page: number;
 	hasNextPage: boolean;
@@ -47,8 +49,8 @@ export function Pagination({
 			<button
 				onClick={() => onPageChange(Math.max(1, page - 1))}
 				disabled={page === 1}
-				className="px-2 sm:px-4 py-2 rounded-lg bg-blue-500 text-white disabled:bg-gray-300 cursor-pointer text-sm sm:text-base">
-				Previous
+				className="rounded-lg bg-gray-600 text-white disabled:bg-gray-300 cursor-pointer text-sm sm:text-base w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
+				<ChevronLeft size={20} />
 			</button>
 			<div className="flex items-center gap-1 sm:gap-2">
 				{getPageNumbers().map((pageNum) =>
@@ -63,8 +65,8 @@ export function Pagination({
 							disabled={pageNum === page}
 							className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg text-sm sm:text-base ${
 								pageNum === page
-									? 'bg-blue-600 text-white'
-									: 'bg-blue-400 hover:bg-blue-500'
+									? 'bg-gray-700 text-white'
+									: 'bg-gray-400 hover:bg-gray-600'
 							}`}>
 							{pageNum}
 						</button>
@@ -74,8 +76,8 @@ export function Pagination({
 			<button
 				onClick={() => onPageChange(page + 1)}
 				disabled={!hasNextPage}
-				className="px-2 sm:px-4 py-2 rounded-lg bg-blue-500 text-white disabled:bg-gray-300 cursor-pointer text-sm sm:text-base">
-				Next
+				className="rounded-lg bg-gray-600 text-white disabled:bg-gray-300 cursor-pointer text-sm sm:text-base w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
+				<ChevronRight size={20} />
 			</button>
 		</div>
 	);

@@ -63,6 +63,7 @@ src/
 │   └── anime/[id]/        # Dynamic anime detail pages
 ├── components/            # Reusable React components
 ├── constant/              # Constant Value for components
+├── context/               # Context for global states values
 ├── hooks/                 # Custom React hooks
 ├── lib/                   # Utility functions
 ├── services/              # API services

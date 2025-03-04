@@ -16,11 +16,11 @@ export default function Home() {
 		isFetching,
 		error,
 		showScrollTop,
-		setPage,
 		setFilters,
 		handleSearch,
 		handleClearSearch,
 		scrollToTop,
+		setPage,
 	} = useAnimePage();
 
 	if (error) return <div className="p-4">Error loading anime list</div>;
