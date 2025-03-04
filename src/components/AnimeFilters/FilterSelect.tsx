@@ -31,7 +31,7 @@ export function FilterSelect({
 		<div className="w-full" ref={selectRef}>
 			<label
 				htmlFor={id}
-				className="block text-base md:text-sm font-medium text-gray-700 mb-2">
+				className="block text-base md:text-sm font-medium text-white mb-2">
 				{label}
 			</label>
 			<div className="relative">

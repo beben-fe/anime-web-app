@@ -21,7 +21,7 @@ export function SearchBar({
 					placeholder="Search anime..."
 					value={search}
 					onChange={(e) => onSearch(e.target.value)}
-					className="w-full px-4 py-2 pr-10 h-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+					className="w-full px-4 py-2 pr-10 h-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800 bg-gray-400/50 text-white"
 				/>
 				{isFetching ? (
 					<div className="absolute right-3 top-1/2 -translate-y-1/2">

@@ -25,7 +25,7 @@ export function FilterContent({
 }: FilterContentProps) {
 	return (
 		<div
-			className={`absolute z-10 left-0 right-0 mt-2 bg-white rounded-lg shadow-md md:relative md:mt-0 border border-gray-600 ${
+			className={`absolute z-10 left-0 right-0 mt-2 bg-gray-400/50 rounded-lg shadow-md md:relative md:mt-0 border border-gray-600 ${
 				!isOpen ? 'hidden md:block' : ''
 			}`}>
 			<div className="p-4">
