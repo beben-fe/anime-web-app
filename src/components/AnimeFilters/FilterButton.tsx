@@ -14,12 +14,12 @@ export function FilterButton({
 	return (
 		<button
 			onClick={onClick}
-			className="md:hidden w-full flex items-center justify-between p-4 bg-white rounded-lg shadow-md">
+			className="md:hidden w-full flex items-center justify-between p-4 bg-gray-800 rounded-lg shadow-md h-10 text-gray-200 border border-gray-600">
 			<div className="flex items-center gap-2">
-				<Filter size={20} className="text-gray-900" />
-				<span className="font-medium text-gray-900">Filters</span>
+				<Filter size={20} className="text-gray-200" />
+				<span className="font-medium text-gray-200">Filters</span>
 				{hasActiveFilters && (
-					<span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+					<span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-lg">
 						Active
 					</span>
 				)}

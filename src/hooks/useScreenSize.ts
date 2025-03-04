@@ -17,6 +17,6 @@ export function useScreenSize() {
 
 	return {
 		isMobile,
-		itemsPerPage: isMobile ? 10 : 24,
+		itemsPerPage: isMobile ? 16 : 24,
 	};
 }

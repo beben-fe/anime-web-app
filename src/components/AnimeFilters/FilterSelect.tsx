@@ -31,7 +31,7 @@ export function FilterSelect({
 		<div className="w-full" ref={selectRef}>
 			<label
 				htmlFor={id}
-				className="block text-base md:text-sm font-medium text-gray-700 mb-2">
+				className="block text-sm font-medium text-gray-300 mb-1.5">
 				{label}
 			</label>
 			<div className="relative">
@@ -39,11 +39,13 @@ export function FilterSelect({
 					ref={buttonRef}
 					type="button"
 					onClick={toggleSelect}
-					className="w-full flex items-center justify-between px-4 py-3 md:py-2 h-14 md:h-10 text-base md:text-sm rounded-md border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
-					<span className="!text-gray-900">{value || placeholder}</span>
+					className="w-full flex items-center justify-between px-3 py-2 text-sm rounded-md border border-gray-600 bg-gray-800 text-gray-200 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-colors">
+					<span className={value ? 'text-gray-200' : 'text-gray-400'}>
+						{value || placeholder}
+					</span>
 					<ChevronDown
-						size={20}
-						className={`text-gray-500 transition-transform ${
+						size={16}
+						className={`text-gray-400 transition-transform duration-200 ${
 							isSelectOpen ? 'rotate-180' : ''
 						}`}
 					/>
@@ -51,7 +53,7 @@ export function FilterSelect({
 
 				{isSelectOpen && (
 					<div
-						className={`absolute z-20 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto ${
+						className={`absolute z-20 w-full bg-gray-800 border border-gray-600 rounded-md shadow-lg max-h-60 overflow-auto ${
 							dropdownPosition === 'top'
 								? 'bottom-[calc(100%+0.25rem)]'
 								: 'top-[calc(100%+0.25rem)]'
@@ -62,7 +64,7 @@ export function FilterSelect({
 								onChange('');
 								closeSelect();
 							}}
-							className="w-full px-4 py-4 md:py-2 text-left text-base text-gray-900 md:text-sm hover:bg-gray-100 focus:bg-gray-100">
+							className="w-full px-3 py-2 text-left text-sm text-gray-400 hover:bg-gray-700 hover:text-gray-200 focus:bg-gray-700 focus:text-gray-200 transition-colors">
 							{placeholder}
 						</button>
 						{options.map((option) => (
@@ -73,7 +75,7 @@ export function FilterSelect({
 									onChange(option.toString());
 									closeSelect();
 								}}
-								className="w-full px-4 py-4 md:py-2 text-left text-base md:text-sm text-gray-900 hover:bg-gray-100 focus:bg-gray-100">
+								className="w-full px-3 py-2 text-left text-sm text-gray-200 hover:bg-gray-700 focus:bg-gray-700 transition-colors">
 								{option}
 							</button>
 						))}

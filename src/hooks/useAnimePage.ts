@@ -3,9 +3,10 @@ import { useAnimeList } from './useAnime';
 import debounce from 'lodash/debounce';
 import { Filters } from '@/types/anime';
 import { useScreenSize } from './useScreenSize';
+import { usePage } from '@/context/PageContext';
 
 export function useAnimePage() {
-	const [page, setPage] = useState(1);
+	const { currentPage, setCurrentPage } = usePage();
 	const [search, setSearch] = useState('');
 	const [debouncedSearch, setDebouncedSearch] = useState(search);
 	const [showScrollTop, setShowScrollTop] = useState(false);
@@ -20,7 +21,7 @@ export function useAnimePage() {
 	const { itemsPerPage } = useScreenSize();
 
 	const { data, isFetching, error } = useAnimeList(
-		page,
+		currentPage,
 		debouncedSearch,
 		filters,
 		itemsPerPage
@@ -29,9 +30,9 @@ export function useAnimePage() {
 	const debouncedSetSearch = useCallback(
 		debounce((value: string) => {
 			setDebouncedSearch(value);
-			setPage(1);
+			setCurrentPage(1);
 		}, 500),
-		[setDebouncedSearch, setPage]
+		[setDebouncedSearch, setCurrentPage]
 	);
 
 	useEffect(() => {
@@ -68,18 +69,18 @@ export function useAnimePage() {
 		setSearch('');
 		setDebouncedSearch('');
 		debouncedSetSearch.cancel();
-		setPage(1);
+		setCurrentPage(1);
 	};
 
 	return {
-		page,
+		page: currentPage,
 		search,
 		filters,
 		data,
 		isFetching,
 		error,
 		showScrollTop,
-		setPage,
+		setPage: setCurrentPage,
 		setFilters,
 		handleSearch,
 		handleClearSearch,

@@ -11,13 +11,12 @@ interface AnimeGridProps {
 export function AnimeGrid({ data, isFetching }: AnimeGridProps) {
 	if (isFetching) {
 		return (
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+			<div className="grid grid-cols-2 lg:grid-cols-6 gap-6">
 				{[...Array(12)].map(() => (
 					<div
 						key={`skeleton-${crypto.randomUUID()}`}
 						className="animate-pulse">
 						<div className="bg-gray-200 aspect-[3/4] rounded-lg mb-2"></div>
-						<div className="h-4 bg-gray-200 rounded w-3/4"></div>
 					</div>
 				))}
 			</div>
@@ -25,31 +24,46 @@ export function AnimeGrid({ data, isFetching }: AnimeGridProps) {
 	}
 
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+		<div className="grid grid-cols-2 lg:grid-cols-6 gap-6">
 			{data?.data?.map((anime: AnimeData, index: number) => (
 				<Link
 					href={`/anime/${anime.mal_id}`}
 					key={anime.mal_id + anime.title + index}
 					className="group hover:transform hover:scale-105 transition-transform duration-200">
-					<div className="bg-white rounded-lg shadow-lg overflow-hidden">
+					<div className="rounded-lg shadow-lg overflow-hidden">
 						<div className="relative aspect-[3/4] w-full flex justify-center">
 							<Image
 								src={anime.images.webp.large_image_url}
 								alt={anime.title}
-								className="object-cover rounded-lg"
+								className="object-fill rounded-lg"
 								fill
 								priority={true}
 								loading="eager"
 							/>
-						</div>
-						<div className="p-4 h-[120px] flex flex-col justify-between">
-							<h2 className="font-semibold text-lg line-clamp-2 text-black">
-								{truncateText(anime.title, 40)}
-							</h2>
-							<div className="flex justify-between text-sm text-gray-600">
-								<span>{anime.type}</span>
-								<span>⭐ {anime.score}</span>
+							<div className="absolute top-1 right-1 w-full h-full flex flex-row-reverse">
+								<div className="rounded-md bg-orange-600/90 w-12 h-6 flex items-center justify-center">
+									<span className="text-white text-xs">
+										{anime.type ?? '-'}
+									</span>
+								</div>
 							</div>
+							<div className="absolute bottom-1 left-1 w-full h-full flex flex-col-reverse">
+								<div className="rounded-md bg-blue-600/90 w-12 h-6 flex items-center justify-center">
+									<span className="text-white text-xs">{`${
+										anime.episodes ?? '-'
+									} eps`}</span>
+								</div>
+							</div>
+							<div className="absolute bottom-1 right-1 w-full h-full flex flex-row-reverse flex-wrap-reverse">
+								<div className="rounded-md bg-black/70 w-12 h-6 flex items-center justify-center">
+									<span className="text-white text-xs">⭐ {anime.score}</span>
+								</div>
+							</div>
+						</div>
+						<div className="p-2 h-[60px] flex flex-col text-center">
+							<span className="font-semibold line-clamp-2 text-gray-200 text-sm">
+								{truncateText(anime.title, 40)}
+							</span>
 						</div>
 					</div>
 				</Link>

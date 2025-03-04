@@ -16,25 +16,27 @@ export default function Home() {
 		isFetching,
 		error,
 		showScrollTop,
-		setPage,
 		setFilters,
 		handleSearch,
 		handleClearSearch,
 		scrollToTop,
+		setPage,
 	} = useAnimePage();
 
 	if (error) return <div className="p-4">Error loading anime list</div>;
 
 	return (
 		<main className="container mx-auto px-4 py-8">
-			<h1 className="text-4xl font-bold mb-8">Anime Explorer</h1>
+			<div className="flex sm:flex-row flex-col justify-between items-center mb-0  w-full">
+				<h1 className="text-4xl font-bold mb-8">Anime Explorer</h1>
 
-			<SearchBar
-				search={search}
-				isFetching={isFetching}
-				onSearch={handleSearch}
-				onClear={handleClearSearch}
-			/>
+				<SearchBar
+					search={search}
+					isFetching={isFetching}
+					onSearch={handleSearch}
+					onClear={handleClearSearch}
+				/>
+			</div>
 
 			<AnimeFilters filters={filters} onFilterChange={setFilters} />
 

@@ -11,7 +11,7 @@ export function ScrollToTop({ visible, onClick }: ScrollToTopProps) {
 	return (
 		<button
 			onClick={onClick}
-			className="fixed bottom-8 right-8 p-3 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 z-50 cursor-pointer"
+			className="fixed bottom-8 right-8 p-3 bg-gray-700 text-white rounded-full shadow-lg hover:bg-gray-800 transition-all duration-300 z-50 cursor-pointer border border-gray-600"
 			aria-label="Scroll to top">
 			<ArrowUp size={24} />
 		</button>
