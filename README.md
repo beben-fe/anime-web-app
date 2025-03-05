@@ -1,12 +1,12 @@
 # Anime Explorer
 
-A modern web application for exploring and discovering anime using the Jikan API (unofficial MyAnimeList API). Built with Next.js 15, React 19, and Tailwind CSS.
+A modern web application for exploring and discovering anime using the Jikan API (unofficial MyAnimeList API). Built with Next.js 14, React 18, and Tailwind CSS.
 
 ## Features
 
 - Browse anime with pagination
 - Real-time search with debouncing
-- Advanced filtering system (type, score, status, rating, genres)
+- Advanced filtering system (type, score, status, rating)
 - Detailed anime information pages
 - Responsive design for all devices
 - Modern UI with loading states and animations
@@ -15,10 +15,8 @@ A modern web application for exploring and discovering anime using the Jikan API
 
 ## Tech Stack
 
-- Next.js 15.2.0 (Latest App Router)
-- React 19 (Latest)
-  - Improved performance with automatic memo
-  - Enhanced server components
+- Next.js 14.1.0
+- React 18.2.0
   - Better error handling
   - Improved hooks system
 - TanStack Query (React Query) v5
@@ -31,7 +29,7 @@ A modern web application for exploring and discovering anime using the Jikan API
 
 ### Prerequisites
 
-- Node.js 20.11.0 or later (for Next.js 15)
+- Node.js 20.11.0 or later (for Next.js 14)
 - yarn (recommended) or npm
 
 ### Installation
@@ -67,6 +65,7 @@ src/
 ├── hooks/                 # Custom React hooks
 ├── lib/                   # Utility functions
 ├── services/              # API services
+└── test/                  # Mockup data test
 └── types/                 # TypeScript type definitions
 ```
 
@@ -92,16 +91,16 @@ src/
 
 ### Running Tests
 ```bash
-npm run test
-# or
 yarn test
+# or
+npm run test
 ```
 
 ### Linting
 ```bash
-npm run lint
-# or
 yarn lint
+# or
+npm run lint
 ```
 
 ## Contributing
