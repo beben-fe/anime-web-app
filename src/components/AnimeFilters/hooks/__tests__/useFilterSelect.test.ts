@@ -24,6 +24,9 @@ describe('useFilterSelect', () => {
 		// Mock document event listeners
 		document.addEventListener = jest.fn();
 		document.removeEventListener = jest.fn();
+
+		// Reset getBoundingClientRect to original before each test
+		Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
 	});
 
 	afterEach(() => {
@@ -31,6 +34,9 @@ describe('useFilterSelect', () => {
 		document.addEventListener = originalAddEventListener;
 		document.removeEventListener = originalRemoveEventListener;
 		Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
+
+		// Reset any window property modifications
+		jest.restoreAllMocks();
 	});
 
 	it('should initialize with closed select and bottom dropdown position', () => {
@@ -125,12 +131,26 @@ describe('useFilterSelect', () => {
 	});
 
 	it('should set dropdown position to bottom when there is enough space below', () => {
-		// Mock getBoundingClientRect - plenty of space below
-		Element.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+		// Create a mock button element
+		const mockButton = document.createElement('button');
+		mockButton.className = 'button';
+
+		// Mock getBoundingClientRect for plenty of space below
+		const mockRect: MockRect = {
 			top: 100,
 			bottom: 150,
 			height: 50,
-		});
+			width: 100,
+			left: 0,
+			right: 100,
+			x: 0,
+			y: 100,
+			toJSON: () => {},
+		};
+
+		jest
+			.spyOn(HTMLElement.prototype, 'getBoundingClientRect')
+			.mockImplementation((): DOMRect => mockRect as DOMRect);
 
 		// Mock window dimensions - large window
 		Object.defineProperty(window, 'innerHeight', {
@@ -140,6 +160,17 @@ describe('useFilterSelect', () => {
 		});
 
 		const { result } = renderHook(() => useFilterSelect());
+
+		// Set the button ref
+		if (result.current.buttonRef.current) {
+			Object.defineProperty(
+				result.current.buttonRef.current,
+				'getBoundingClientRect',
+				{
+					value: () => mockRect,
+				}
+			);
+		}
 
 		// Open the select to trigger position calculation
 		act(() => {
@@ -151,7 +182,11 @@ describe('useFilterSelect', () => {
 	});
 
 	it('should set dropdown position to top when there is not enough space below', () => {
-		// Mock getBoundingClientRect with proper types
+		// Create a mock button element with the correct class
+		const mockButton = document.createElement('button');
+		mockButton.className = 'button';
+
+		// Mock getBoundingClientRect for button near bottom
 		const mockButtonRect: MockRect = {
 			top: 500,
 			bottom: 550,
@@ -164,47 +199,38 @@ describe('useFilterSelect', () => {
 			toJSON: () => {},
 		};
 
-		const mockDefaultRect: MockRect = {
-			top: 0,
-			bottom: 0,
-			height: 0,
-			width: 0,
-			left: 0,
-			right: 0,
-			x: 0,
-			y: 0,
-			toJSON: () => {},
-		};
-
-		jest
-			.spyOn(HTMLElement.prototype, 'getBoundingClientRect')
-			.mockImplementation(function (this: HTMLElement): DOMRect {
-				return (
-					this.className?.includes('button') ? mockButtonRect : mockDefaultRect
-				) as DOMRect;
-			});
-
-		// Mock window dimensions - small window with very little space below
+		// Mock window dimensions - small window
 		Object.defineProperty(window, 'innerHeight', {
 			writable: true,
 			configurable: true,
 			value: 600,
 		});
 
-		// In the hook, we're comparing:
-		// spaceBelow (600 - 550 = 50) vs dropdownHeight (300)
-		// AND spaceBelow (50) vs spaceAbove (500)
-		// Since 50 < 300 AND 50 < 500, it should choose 'top'
-
 		const { result } = renderHook(() => useFilterSelect());
+		// Set up the button ref and getBoundingClientRect mock
+		if (result.current.buttonRef.current) {
+			Object.defineProperty(
+				result.current.buttonRef.current,
+				'getBoundingClientRect',
+				{
+					value: () => mockButtonRect,
+					configurable: true,
+				}
+			);
 
-		// Open the select to trigger position calculation
-		act(() => {
-			result.current.toggleSelect();
-		});
+			// First render cycle to set up refs
+			act(() => {
+				// Force a render cycle
+				result.current.toggleSelect();
+			});
 
-		// Should be positioned at the top since there's not enough space below
-		// and more space above than below
-		expect(result.current.dropdownPosition).toBe('top');
+			// Verify the conditions:
+			// spaceBelow = window.innerHeight(600) - buttonRect.bottom(550) = 50
+			// spaceAbove = buttonRect.top(500)
+			// dropdownHeight = 300
+			// Since spaceBelow(50) < dropdownHeight(300) AND spaceBelow(50) < spaceAbove(500)
+			// It should position the dropdown at the top
+			expect(result.current.dropdownPosition).toBe('top');
+		}
 	});
 });

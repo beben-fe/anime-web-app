@@ -113,7 +113,7 @@ describe('useAnimePage', () => {
 		const wrapper = createWrapper();
 		const { result } = renderHook(() => useAnimePage(), { wrapper });
 
-		expect(result.current.page).toBe('1');
+		expect(result.current.page).toBe(1);
 		expect(result.current.search).toBe('');
 		expect(result.current.filters).toEqual({
 			type: '',
@@ -183,7 +183,7 @@ describe('useAnimePage', () => {
 			result.current.setPage(2);
 		});
 
-		expect(result.current.page).toBe('2');
+		expect(result.current.page).toBe(2);
 	});
 
 	it('should scroll to top', () => {
