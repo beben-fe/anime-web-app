@@ -1,4 +1,11 @@
-import { createJestConfig } from 'next/jest';
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @next/next/no-html-link-for-pages */
+/* eslint-disable import/no-commonjs */
+const nextJest = require('next/jest');
+
+const createJestConfig = nextJest({
+	dir: './',
+});
 
 const customJestConfig = {
 	setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
@@ -13,7 +20,7 @@ const customJestConfig = {
 		'!**/node_modules/**',
 		'!**/.next/**',
 	],
-	testMatch: ['**/__tests__/**/*.test.{js,jsx,ts,tsx}'],
+	testMatch: ['**/__tests__/**/*.test.[jt]s?(x)'],
 	transform: {
 		'^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
 	},
@@ -23,4 +30,4 @@ const customJestConfig = {
 	],
 };
 
-export default createJestConfig(customJestConfig);
+module.exports = createJestConfig(customJestConfig);

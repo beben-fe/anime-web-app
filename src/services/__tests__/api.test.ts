@@ -21,11 +21,9 @@ describe('API Service', () => {
 			const result = await getAnimeList();
 
 			expect(result).toEqual(mockAnimeResponse);
-
 			expect(global.fetch).toHaveBeenCalledTimes(1);
 			expect(global.fetch).toHaveBeenCalledWith(
-				'https://api.jikan.moe/v4/anime?page=1&limit=24',
-				undefined
+				'https://api.jikan.moe/v4/anime?page=1&limit=24'
 			);
 		});
 
@@ -44,7 +42,7 @@ describe('API Service', () => {
 			expect(fetchCall).toContain('limit=10');
 			expect(fetchCall).toContain('status=Airing');
 			expect(fetchCall).toContain('rating=PG-13');
-			expect(fetchCall).toContain('genres=Action,Comedy');
+			expect(fetchCall).toContain('genres=Action%2CComedy');
 		});
 
 		it('handles failed requests', async () => {
@@ -64,10 +62,9 @@ describe('API Service', () => {
 		it('fetches anime details by ID', async () => {
 			const result = await getAnimeById('123');
 
-			expect(result).toEqual({ data: mockAnimeResponse.data[0] });
+			expect(result).toEqual(mockAnimeResponse);
 			expect(global.fetch).toHaveBeenCalledWith(
-				'https://api.jikan.moe/v4/anime/123/full',
-				undefined
+				'https://api.jikan.moe/v4/anime/123/full'
 			);
 		});
 

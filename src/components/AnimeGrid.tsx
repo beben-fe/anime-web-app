@@ -12,10 +12,8 @@ export function AnimeGrid({ data, isFetching }: AnimeGridProps) {
 	if (isFetching) {
 		return (
 			<div className="grid grid-cols-2 lg:grid-cols-6 gap-6">
-				{[...Array(12)].map(() => (
-					<div
-						key={`skeleton-${crypto.randomUUID()}`}
-						className="animate-pulse">
+				{[...Array(12)].map((_, index) => (
+					<div key={`skeleton-${index}`} className="animate-pulse">
 						<div className="bg-gray-200 aspect-[3/4] rounded-lg mb-2"></div>
 					</div>
 				))}
@@ -23,9 +21,20 @@ export function AnimeGrid({ data, isFetching }: AnimeGridProps) {
 		);
 	}
 
+	// Show empty state if there's no data or the data array is empty
+	if (!data?.data || data.data.length === 0) {
+		return (
+			<div className="flex justify-center items-center p-10 text-gray-200">
+				<p className="text-lg">
+					No anime found. Try different filters or search terms.
+				</p>
+			</div>
+		);
+	}
+
 	return (
 		<div className="grid grid-cols-2 lg:grid-cols-6 gap-6">
-			{data?.data?.map((anime: AnimeData, index: number) => (
+			{data.data.map((anime: AnimeData, index: number) => (
 				<Link
 					href={`/anime/${anime.mal_id}`}
 					key={anime.mal_id + anime.title + index}
