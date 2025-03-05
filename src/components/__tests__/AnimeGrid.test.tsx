@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { AnimeGrid } from '../AnimeGrid';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { AnimeResponse } from '@/types/anime';
 
 // Mock data for testing
 const mockAnimeData = {
@@ -24,6 +25,22 @@ const mockAnimeData = {
 			episodes: 12,
 			score: 8.5,
 			studios: [{ mal_id: 1, name: 'Test Studio', url: 'https://example.com' }],
+			url: 'https://example.com',
+			title_english: 'Test Anime',
+			title_japanese: 'テストアニメ',
+			source: 'Original',
+			status: 'Finished Airing',
+			rating: 'PG-13',
+			synopsis: 'Test synopsis',
+			year: 2023,
+			season: 'Winter',
+			genres: [],
+			duration: '24 min per ep',
+			aired: { from: '2023-01-01', to: '2023-03-31' },
+			popularity: 100,
+			members: 1000,
+			favorites: 50,
+			rank: 10,
 		},
 	],
 	pagination: {
@@ -36,14 +53,23 @@ const mockAnimeData = {
 			per_page: 25,
 		},
 	},
-};
+} as unknown as AnimeResponse;
 
 // Mock next/image
 jest.mock('next/image', () => ({
 	__esModule: true,
-	default: ({ src, alt, ...props }: any) => (
-		<img src={src} alt={alt} {...props} data-testid="next-image" />
-	),
+	default: ({
+		src,
+		alt,
+		...props
+	}: {
+		src: string;
+		alt: string;
+		fill?: boolean;
+		priority?: boolean;
+		loading?: 'eager' | 'lazy';
+		className?: string;
+	}) => <img src={src} alt={alt} data-testid="next-image" {...props} />,
 }));
 
 // Setup wrapper with providers

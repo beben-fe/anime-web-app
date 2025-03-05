@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable @next/next/no-html-link-for-pages */
-/* eslint-disable import/no-commonjs */
 const nextJest = require('next/jest');
 
 const createJestConfig = nextJest({
