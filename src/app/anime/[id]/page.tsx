@@ -13,7 +13,9 @@ export default function AnimePage() {
 
 	if (isFetching) {
 		return (
-			<div className="container mx-auto px-4 py-8 animate-pulse">
+			<div
+				className="container mx-auto px-4 py-8 animate-pulse"
+				data-testid="anime-loading-skeleton">
 				<div className="flex flex-col md:flex-row gap-8">
 					<div className="w-full md:w-1/3">
 						<div className="relative aspect-[3/4] w-full">

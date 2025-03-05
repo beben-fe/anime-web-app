@@ -3,14 +3,14 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
 interface PageContextType {
-	currentPage: string;
-	setCurrentPage: (page: string) => void;
+	currentPage: number;
+	setCurrentPage: (page: number) => void;
 }
 
 const PageContext = createContext<PageContextType | undefined>(undefined);
 
 export function PageProvider({ children }: { children: ReactNode }) {
-	const [currentPage, setCurrentPage] = useState('1');
+	const [currentPage, setCurrentPage] = useState(1);
 
 	return (
 		<PageContext.Provider value={{ currentPage, setCurrentPage }}>
