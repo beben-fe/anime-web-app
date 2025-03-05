@@ -2,8 +2,13 @@
 /node_modules
 /.pnp
 .pnp.js
+yarn.lock
+
+# testing
+/coverage
 
 # next.js
+/.next/
 .next/
 /out/
 next/
@@ -12,12 +17,13 @@ next/
 /build
 /dist
 
+# misc
+.DS_Store
+*.pem
+
 # debug
 yarn-debug.log*
 yarn-error.log*
-
-# IDE
-.vscode/
 
 # vercel
 .vercel
@@ -26,6 +32,17 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swc
+
 # cache
 .cache/
 .eslintcache
+
+# logs
+logs
+*.log

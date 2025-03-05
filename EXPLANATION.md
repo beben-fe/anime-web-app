@@ -2,41 +2,61 @@
 
 ## Architecture Overview
 
-The application follows a modern React architecture with Next.js 15.2.0 and React 19, leveraging the latest features and improvements.
+The application follows a modern React architecture with Next.js 14.1.0 and React 18.2.0, leveraging the latest features and improvements.
 
-### React 19 Features Utilized
+### React 18 Features Utilized
 
-1. **Automatic Memo**
-   - Improved component rendering optimization
-   - Better performance without manual memoization
-   - Smarter re-rendering strategies
+1. **Concurrent Rendering**
+   - Improved rendering performance
+   - Enables React to work on multiple tasks simultaneously
+   - Better user experience with smoother transitions
 
-2. **Enhanced Hooks**
-   - Improved useEffect behavior
-   - Better state management
-   - More efficient context usage
+2. **Automatic Batching**
+   - Groups multiple state updates into a single re-render
+   - Reduces unnecessary renders
+   - Enhances performance in complex applications
 
-3. **Server Components**
-   - Better integration with Next.js
-   - Improved streaming capabilities
-   - Enhanced hydration process
+3. **Transition API**
+   - Allows marking updates as transitions
+   - Improves responsiveness by prioritizing urgent updates
+   - Provides a smoother user experience
 
-### Next.js 15.2.0 Features Utilized
+4. **Suspense for Data Fetching**
+   - Simplifies asynchronous data fetching
+   - Allows components to wait for data before rendering
+   - Enhances server-side rendering capabilities
 
-1. **Turbopack**
-   - Faster development server
-   - Improved hot module replacement
-   - Better TypeScript support
+5. **Improved SSR and Hydration**
+   - Faster server-side rendering
+   - More efficient hydration process
+   - Better integration with frameworks like Next.js
 
-2. **App Router Improvements**
-   - Enhanced server components
-   - Parallel routes optimization
-   - Improved caching mechanisms
+### Next.js 14.1.0 Features Utilized
 
-3. **Image Component**
-   - Latest optimizations for images
-   - Better lazy loading support
-   - Improved responsive handling
+1. **Improved Image Component**
+   - Built-in image optimization
+   - Automatic lazy loading
+   - Enhanced support for responsive images
+
+2. **Enhanced Static Generation**
+   - Incremental Static Regeneration (ISR)
+   - Faster builds with static site generation
+   - Improved caching strategies
+
+3. **API Routes**
+   - Serverless functions for backend logic
+   - Simplified API development
+   - Seamless integration with frontend components
+
+4. **Internationalized Routing**
+   - Built-in support for multiple languages
+   - Automatic language detection
+   - Simplified locale management
+
+5. **Webpack 5 Support**
+   - Improved build performance
+   - Enhanced module federation
+   - Better tree-shaking capabilities
 
 ### Key Components
 
@@ -58,7 +78,7 @@ The application follows a modern React architecture with Next.js 15.2.0 and Reac
 ### Data Management
 
 1. **React Query Implementation**
-   - Optimized for Next.js 15.2.0
+   - Optimized for Next.js 14.1.0
    - Caching strategy:
      - List data: 5-minute stale time
      - Detail data: 5-minute stale time
@@ -72,11 +92,11 @@ The application follows a modern React architecture with Next.js 15.2.0 and Reac
 
 ### Performance Optimizations
 
-1. **Next.js 15.2.0 Specific**
-   - Leveraging Turbopack for faster development
-   - Optimized server-side rendering
-   - Enhanced static optimization
-   - Improved client-side navigation
+1. **Next.js 14.1.0 Specific**
+   - Built-in image optimization with the Image component
+   - Incremental Static Regeneration (ISR) for dynamic content
+   - Improved static site generation and caching
+   - Enhanced client-side navigation with Link component
 
 2. **Search Optimization**
    - 500ms debounce on search input
@@ -96,9 +116,8 @@ The application follows a modern React architecture with Next.js 15.2.0 and Reac
 ### Responsive Design
 
 1. **Grid System**
-   - 1 column on mobile
-   - 2 columns on tablet
-   - 4 columns on desktop
+   - 2 column on mobile
+   - 6 columns on tablet and desktop
 
 2. **Component Adaptations**
    - Flexible filter layout
@@ -111,7 +130,7 @@ The application follows a modern React architecture with Next.js 15.2.0 and Reac
    - Infinite scroll implementation
    - Advanced filtering system
    - User preferences storage
-   - Dark mode support
+   - Light/Dark mode support
 
 2. **Performance Opportunities**
    - Image optimization
